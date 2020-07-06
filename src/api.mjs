@@ -14,7 +14,7 @@ app.use([
   bodyParser.urlencoded({ extended: true }),
 ]);
 
-app.use('/.netlify/functions/api/**', [
+app.use('/.netlify/functions/api', [
   health,
   user,
 ]);  // path must route to lambda
