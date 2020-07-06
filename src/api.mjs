@@ -19,6 +19,11 @@ app.use('/.netlify/functions/api', [
   user,
 ]);  // path must route to lambda
 
+app.use('/', [
+  health,
+  user,
+]);  // path must route to lambda
+
 export const handler = serverless(app);
 
 export default app;
