@@ -5,7 +5,11 @@ import serverless from 'serverless-http';
 
 const app = express();
 
+const router = express.Router();
 
+router.get('/', async (req, res) => {
+  return res.send('hello world');
+});
 
 app.use([
   cors(),
@@ -13,9 +17,7 @@ app.use([
   bodyParser.urlencoded({ extended: true }),
 ]);
 
-app.get('/', async (req, res) => {
-  return res.send('hello world');
-});
+app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 export const handler = serverless(app);
 
