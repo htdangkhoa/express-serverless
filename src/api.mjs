@@ -14,15 +14,17 @@ app.use([
   bodyParser.urlencoded({ extended: true }),
 ]);
 
+/* For netlify functions */
 app.use('/.netlify/functions/api', [
   health,
   user,
-]);  // path must route to lambda
+]);
 
+/* For local */
 app.use('/', [
   health,
   user,
-]);  // path must route to lambda
+]);
 
 export const handler = serverless(app);
 
