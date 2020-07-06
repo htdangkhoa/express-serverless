@@ -3,13 +3,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import serverless from 'serverless-http';
 
+import health from './routes/health';
+import user from './routes/user';
+
 const app = express();
-
-const router = express.Router();
-
-router.get('/', async (req, res) => {
-  return res.send('hello world');
-});
 
 app.use([
   cors(),
@@ -17,7 +14,10 @@ app.use([
   bodyParser.urlencoded({ extended: true }),
 ]);
 
-app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/.netlify/functions/api', [
+  health,
+  user,
+]);  // path must route to lambda
 
 export const handler = serverless(app);
 
