@@ -11,6 +11,7 @@
     "serverless-http": "^2.5.0"
   },
   "scripts": {
+    "start": "node --es-module-specifier-resolution=node src/index.mjs",
     "dev": "node --es-module-specifier-resolution=node src/index.mjs"
   },
   "engines": {
