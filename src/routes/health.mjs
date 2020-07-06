@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/check', (req, res) => {
+router.get('/', (req, res) => {
   return res.send('App is live.');
 });
 
